@@ -88,100 +88,79 @@ async function seedDatabase() {
     // Seed Menu Items
     const menuItems = [
       {
-        name: "Classic Aura Burger",
-        description: "Premium beef patty, cheddar cheese, lettuce, tomato, special sauce on a brioche bun.",
-        price: 1299, // $12.99
+        name: "Wagyu Gold Burger",
+        description: "Premium A5 Wagyu beef patty, caramelized onions, aged cheddar, and truffle aioli on a toasted brioche bun.",
+        price: 650, 
         category: "Meals",
         image: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=800",
         popular: true,
         available: true
       },
       {
-        name: "Spicy Chicken Deluxe",
-        description: "Crispy chicken breast, spicy mayo, pickles, slaw on a toasted bun.",
-        price: 1150, // $11.50
+        name: "Truffle Mushroom Pasta",
+        description: "Creamy fettuccine with authentic black truffle shavings, wild forest mushrooms, and aged parmesan.",
+        price: 450, 
         category: "Meals",
-        image: "https://images.unsplash.com/photo-1615557960916-5f4791effe9d?auto=format&fit=crop&w=800",
+        image: "https://images.unsplash.com/photo-1473093226795-af9932fe5856?auto=format&fit=crop&w=800",
         popular: true,
         available: true
       },
       {
-        name: "Margherita Supreme",
-        description: "Fresh basil, mozzarella di bufala, san marzano tomato sauce, olive oil.",
-        price: 1400, // $14.00
+        name: "Premium Sushi Platter",
+        description: "Assorted fresh sashimi and nigiri with premium wasabi and pickled ginger.",
+        price: 890, 
         category: "Meals",
-        image: "https://images.unsplash.com/photo-1574071318508-1cdbab80d002?auto=format&fit=crop&w=800",
-        popular: false,
-        available: true
-      },
-      {
-        name: "Truffle Mushroom Pizza",
-        description: "Wild mushrooms, truffle oil, mozzarella, thyme, white sauce base.",
-        price: 1650, // $16.50
-        category: "Meals",
-        image: "https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=800",
+        image: "https://images.unsplash.com/photo-1579871494447-9811cf80d66c?auto=format&fit=crop&w=800",
         popular: true,
         available: true
       },
       {
-        name: "Crispy Onion Rings",
-        description: "Golden fried onion rings served with ranch dipping sauce.",
-        price: 550, // $5.50
-        category: "Snacks",
-        image: "https://images.unsplash.com/photo-1639024471283-03518883512d?auto=format&fit=crop&w=800",
-        popular: false,
-        available: true
-      },
-      {
-        name: "Loaded Fries",
-        description: "French fries topped with melted cheese, bacon bits, and green onions.",
-        price: 750, // $7.50
-        category: "Snacks",
-        image: "https://images.unsplash.com/photo-1585109649139-3668018951a6?auto=format&fit=crop&w=800",
-        popular: true,
-        available: true
-      },
-      {
-        name: "Sunrise Smoothie",
-        description: "Mango, pineapple, banana, orange juice blend.",
-        price: 600, // $6.00
-        category: "Drinks",
-        image: "https://images.unsplash.com/photo-1505252585461-04db1eb84625?auto=format&fit=crop&w=800",
-        popular: false,
-        available: true
-      },
-      {
-        name: "Iced Caramel Macchiato",
-        description: "Espresso, vanilla syrup, milk, caramel drizzle over ice.",
-        price: 500, // $5.00
-        category: "Drinks",
-        image: "https://images.unsplash.com/photo-1461023058943-48dbf1399f98?auto=format&fit=crop&w=800",
-        popular: true,
-        available: true
-      },
-      {
-        name: "Avocado Toast",
-        description: "Sourdough bread, smashed avocado, poached egg, chili flakes.",
-        price: 950, // $9.50
+        name: "Avocado & Egg Sourdough",
+        description: "Freshly smashed Hass avocado, poached organic eggs, and microgreens on artisan sourdough.",
+        price: 320, 
         category: "Breakfast",
-        image: "https://images.unsplash.com/photo-1588137372308-15f75323ca8d?auto=format&fit=crop&w=800",
+        image: "https://images.unsplash.com/photo-1525351484163-7529414344d8?auto=format&fit=crop&w=800",
         popular: false,
         available: true
       },
       {
-        name: "Berry Pancakes",
-        description: "Fluffy pancakes topped with fresh berries, maple syrup, and whipped cream.",
-        price: 1050, // $10.50
+        name: "Berry Nutella Crepes",
+        description: "Thin French crepes filled with Nutella and topped with a medley of fresh seasonal berries.",
+        price: 280, 
         category: "Breakfast",
-        image: "https://images.unsplash.com/photo-1506084868230-bb9d95c24759?auto=format&fit=crop&w=800",
+        image: "https://images.unsplash.com/photo-1519676867240-f03562e64548?auto=format&fit=crop&w=800",
         popular: true,
+        available: true
+      },
+      {
+        name: "Crispy Peri Peri Fries",
+        description: "Hand-cut golden fries tossed in our signature peri peri spice blend.",
+        price: 180, 
+        category: "Snacks",
+        image: "https://images.unsplash.com/photo-1573080496219-bb080dd4f877?auto=format&fit=crop&w=800",
+        popular: false,
+        available: true
+      },
+      {
+        name: "Classic Cold Brew",
+        description: "12-hour slow-steeped Arabica coffee served over ice.",
+        price: 220, 
+        category: "Drinks",
+        image: "https://images.unsplash.com/photo-1517701604599-bb29b565090c?auto=format&fit=crop&w=800",
+        popular: true,
+        available: true
+      },
+      {
+        name: "Exotic Dragon Fruit Bowl",
+        description: "Fresh dragon fruit, granola, chia seeds, and honey drizzle.",
+        price: 380, 
+        category: "Breakfast",
+        image: "https://images.unsplash.com/photo-1511690656952-34342bb7c2f2?auto=format&fit=crop&w=800",
+        popular: false,
         available: true
       }
     ];
 
-    // Note: Since we don't have a direct insertMany method in our storage interface (to keep it simple),
-    // we'll access db directly here or add it to storage. For now, db access for seeding is fine.
-    // Actually, I'll just iterate for simplicity.
     for (const item of menuItems) {
       await db.insert(schema.menuItems).values(item);
     }

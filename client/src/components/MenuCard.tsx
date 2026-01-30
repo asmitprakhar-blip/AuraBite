@@ -47,11 +47,16 @@ export function MenuCard({ item }: { item: MenuItem }) {
         </p>
 
         <div className="flex items-center justify-between gap-4 mt-auto">
+          <Link href={`/menu/${item.id}`} className="flex-1">
+            <button className="w-full py-2.5 rounded-xl bg-slate-900 text-white font-semibold text-sm hover:bg-slate-800 transition-all shadow-lg shadow-slate-200">
+              Customise
+            </button>
+          </Link>
           <button 
             onClick={() => addToCart(item, 1)}
-            className="w-full py-2.5 rounded-xl bg-slate-50 text-slate-600 font-semibold text-sm hover:bg-slate-100 transition-all flex items-center justify-center gap-2 border border-slate-100"
+            className="p-2.5 rounded-xl bg-primary text-white hover:bg-primary/90 transition-all hover:scale-105 active:scale-95 shadow-lg shadow-primary/20"
           >
-            Add to Cart <ShoppingBag className="w-4 h-4" />
+            <ShoppingBag className="w-5 h-5" />
           </button>
         </div>
       </div>

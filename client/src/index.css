@@ -10,22 +10,22 @@
 
   /* Premium White Theme */
   --background: 40 33% 98%;    /* Very light warm white */
-  --foreground: 222 47% 6%;    /* Slate 950 */
+  --foreground: 222 47% 2%;    /* Darker Slate 950 */
   
   --card: 0 0% 100%;           /* Pure white */
-  --card-foreground: 222 47% 11%;
+  --card-foreground: 222 47% 2%;
  
   --popover: 0 0% 100%;
-  --popover-foreground: 222 47% 11%;
+  --popover-foreground: 222 47% 2%;
  
   --primary: 38 92% 50%;      /* Golden Orange */
   --primary-foreground: 0 0% 100%;
  
   --secondary: 40 20% 95%;    /* Very light gray/warm */
-  --secondary-foreground: 222 47% 11%;
+  --secondary-foreground: 222 47% 2%;
  
   --muted: 210 40% 96.1%;
-  --muted-foreground: 215.4 16.3% 46.9%;
+  --muted-foreground: 222 47% 10%; /* Darker muted text */
  
   --accent: 38 92% 50%;
   --accent-foreground: 0 0% 100%;
@@ -50,22 +50,22 @@
   }
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-display);
-    @apply tracking-tight font-bold text-slate-900;
+    @apply tracking-tight font-bold text-slate-950;
   }
 }
 
 /* Custom Utilities for Visual Polish */
 @layer utilities {
   .text-gradient {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary to-orange-500;
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary to-orange-600;
   }
   
   .glass-card {
-    @apply bg-white/80 backdrop-blur-md border border-slate-200 shadow-xl;
+    @apply bg-white border border-slate-200 shadow-xl;
   }
 
   .glass-nav {
-    @apply bg-white/90 backdrop-blur-lg border-b border-slate-100;
+    @apply bg-white border-b border-slate-200;
   }
 }
 
