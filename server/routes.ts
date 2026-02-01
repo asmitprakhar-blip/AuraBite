@@ -4,11 +4,16 @@ import { storage } from "./storage";
 import { api } from "@shared/routes";
 import { z } from "zod";
 import { insertOrderSchema, insertReviewSchema, insertMessageSchema } from "@shared/schema";
+import { setupAuth, registerAuthRoutes } from "./replit_integrations/auth";
 
 export async function registerRoutes(
   httpServer: Server,
   app: Express
 ): Promise<Server> {
+
+  // Setup Replit Auth
+  await setupAuth(app);
+  registerAuthRoutes(app);
 
   // Menu Routes
   app.get(api.menu.list.path, async (_req, res) => {

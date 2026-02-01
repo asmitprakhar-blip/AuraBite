@@ -2,6 +2,8 @@ import { pgTable, text, serial, integer, boolean, timestamp, jsonb } from "drizz
 import { createInsertSchema } from "drizzle-zod";
 import { z } from "zod";
 
+export * from "./models/auth";
+
 // Menu Items
 export const menuItems = pgTable("menu_items", {
   id: serial("id").primaryKey(),

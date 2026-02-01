@@ -3,6 +3,7 @@ import { ArrowRight, Star, Clock, Truck, ShieldCheck, Quote } from "lucide-react
 import { motion } from "framer-motion";
 import { useMenu } from "@/hooks/use-menu";
 import { MenuCard } from "@/components/MenuCard";
+import { OffersCarousel } from "@/components/OffersCarousel";
 
 export default function Home() {
   const { data: menuItems } = useMenu();
@@ -86,8 +87,11 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Offers & Subscriptions Carousel */}
+      <OffersCarousel />
+
       {/* Features Section */}
-      <section className="py-24 bg-card border-y border-white/5">
+      <section className="py-24 bg-slate-50 border-y border-slate-100">
         <div className="container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-3 gap-8">
             {[
@@ -101,13 +105,13 @@ export default function Home() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: idx * 0.1 }}
-                className="p-8 rounded-2xl bg-secondary/30 border border-white/5 hover:bg-secondary/50 transition-colors text-center group"
+                className="p-8 rounded-2xl bg-white border border-slate-200 hover:shadow-lg transition-all text-center group"
               >
                 <div className="w-16 h-16 mx-auto bg-primary/10 rounded-full flex items-center justify-center mb-6 group-hover:bg-primary group-hover:text-white transition-colors duration-300">
                   <feature.icon className="w-8 h-8 text-primary group-hover:text-white transition-colors" />
                 </div>
-                <h3 className="text-xl font-bold font-display mb-3">{feature.title}</h3>
-                <p className="text-muted-foreground">{feature.desc}</p>
+                <h3 className="text-xl font-bold font-display mb-3 text-slate-900">{feature.title}</h3>
+                <p className="text-slate-500">{feature.desc}</p>
               </motion.div>
             ))}
           </div>
@@ -160,25 +164,31 @@ export default function Home() {
       </section>
 
       {/* Testimonials */}
-      <section className="py-24 bg-card relative overflow-hidden">
+      <section className="py-24 bg-white relative overflow-hidden">
         <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent" />
         <div className="container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <h2 className="text-4xl font-bold font-display text-center mb-16">Customer Love</h2>
+          <h2 className="text-4xl font-bold font-display text-center mb-16 text-slate-900">Customer Love</h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[1, 2, 3].map((i) => (
-              <div key={i} className="bg-background p-8 rounded-2xl border border-white/5 shadow-lg relative">
+            {[
+              { name: "Priya S.", role: "Loyal Customer", review: "AuraBite has transformed my meal prep routine! Fresh, delicious, and delivered on time every single day." },
+              { name: "Rahul M.", role: "Food Enthusiast", review: "The subscription plan is worth every rupee. Quality ingredients and amazing variety in the menu." },
+              { name: "Ananya K.", role: "Working Professional", review: "Best decision I made this year. No more skipping meals or ordering junk food!" }
+            ].map((testimonial, i) => (
+              <div key={i} className="bg-slate-50 p-8 rounded-2xl border border-slate-200 shadow-sm relative">
                 <Quote className="absolute top-6 right-6 w-8 h-8 text-primary/20" />
                 <div className="flex text-primary mb-4">
                   {[...Array(5)].map((_, j) => <Star key={j} className="w-4 h-4 fill-current" />)}
                 </div>
-                <p className="text-muted-foreground mb-6 italic">
-                  "Absolutely the best burger I've had in years. The flavors are incredible and the delivery was super fast!"
+                <p className="text-slate-600 mb-6 italic">
+                  "{testimonial.review}"
                 </p>
                 <div className="flex items-center gap-4">
-                  <div className="w-10 h-10 rounded-full bg-secondary" />
+                  <div className="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center font-bold text-primary">
+                    {testimonial.name.charAt(0)}
+                  </div>
                   <div>
-                    <h4 className="font-bold text-sm">John Doe</h4>
-                    <p className="text-xs text-muted-foreground">Food Critic</p>
+                    <h4 className="font-bold text-sm text-slate-900">{testimonial.name}</h4>
+                    <p className="text-xs text-slate-500">{testimonial.role}</p>
                   </div>
                 </div>
               </div>

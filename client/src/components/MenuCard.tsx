@@ -22,7 +22,7 @@ export function MenuCard({ item }: { item: MenuItem }) {
           </div>
         )}
         <div className="absolute top-3 right-3 z-10 bg-white/90 backdrop-blur-sm text-primary text-xs font-bold px-3 py-1 rounded-full shadow-sm border border-slate-100">
-          ₹{item.price}
+          ₹{(item.price / 100).toFixed(0)}
         </div>
         <img 
           src={item.image} 

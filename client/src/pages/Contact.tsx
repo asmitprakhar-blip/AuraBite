@@ -2,7 +2,7 @@ import { useSendMessage } from "@/hooks/use-contact";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { insertMessageSchema, type InsertMessage } from "@shared/schema";
-import { Loader2, MessageCircle, MapPin, Phone, Mail } from "lucide-react";
+import { Loader2, MessageCircle, Phone, Mail } from "lucide-react";
 
 export default function Contact() {
   const { mutate, isPending } = useSendMessage();
@@ -17,100 +17,108 @@ export default function Contact() {
   };
 
   return (
-    <div className="min-h-screen pt-24 pb-16 px-4 bg-background">
+    <div className="min-h-screen pt-24 pb-16 px-4 bg-white">
       <div className="max-w-7xl mx-auto">
-        <h1 className="text-4xl font-bold font-display text-center mb-16">Get in Touch</h1>
+        <h1 className="text-4xl font-bold font-display text-center mb-4 text-slate-900">Get in Touch</h1>
+        <p className="text-slate-500 text-center mb-16 max-w-xl mx-auto">
+          Have questions about our meal plans or need help with your order? We're here to help!
+        </p>
 
         <div className="grid lg:grid-cols-2 gap-12">
           
           {/* Info Side */}
           <div className="space-y-8">
-            <div className="bg-card p-8 rounded-2xl border border-white/5 space-y-6">
-              <h3 className="text-2xl font-bold font-display mb-4">Contact Info</h3>
+            <div className="bg-slate-50 p-8 rounded-2xl border border-slate-200 space-y-6">
+              <h3 className="text-2xl font-bold font-display mb-4 text-slate-900">Contact Info</h3>
               <ul className="space-y-6">
-                <li className="flex items-start gap-4">
-                  <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary shrink-0">
-                    <MapPin className="w-5 h-5" />
-                  </div>
-                  <div>
-                    <h4 className="font-bold">Visit Us</h4>
-                    <p className="text-muted-foreground">123 Flavor Street, Culinary District<br/>Food City, FC 90210</p>
-                  </div>
-                </li>
                 <li className="flex items-center gap-4">
-                  <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary shrink-0">
+                  <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary shrink-0">
                     <Phone className="w-5 h-5" />
                   </div>
                   <div>
-                    <h4 className="font-bold">Call Us</h4>
-                    <p className="text-muted-foreground">+1 (555) 123-4567</p>
+                    <h4 className="font-bold text-slate-900">Call Us</h4>
+                    <p className="text-slate-600">+91 7277775111</p>
                   </div>
                 </li>
                 <li className="flex items-center gap-4">
-                  <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary shrink-0">
+                  <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary shrink-0">
                     <Mail className="w-5 h-5" />
                   </div>
                   <div>
-                    <h4 className="font-bold">Email Us</h4>
-                    <p className="text-muted-foreground">hello@aurabites.com</p>
+                    <h4 className="font-bold text-slate-900">Email Us</h4>
+                    <p className="text-slate-600">info@aurabiteofficial.com</p>
                   </div>
                 </li>
               </ul>
             </div>
 
             <a 
-              href="https://wa.me/15551234567" 
+              href="https://wa.me/917277775111" 
               target="_blank" 
               className="block w-full py-4 bg-[#25D366] text-white rounded-xl font-bold text-center hover:opacity-90 transition-opacity flex items-center justify-center gap-2"
             >
               <MessageCircle className="w-6 h-6" /> Chat on WhatsApp
             </a>
 
-            {/* Map Placeholder */}
-            <div className="h-64 bg-secondary/50 rounded-2xl flex items-center justify-center border border-white/5">
-              <span className="text-muted-foreground">Google Map Placeholder</span>
+            {/* Delivery Info */}
+            <div className="bg-gradient-to-br from-primary/5 to-orange-50 p-8 rounded-2xl border border-primary/10">
+              <h4 className="text-xl font-bold font-display mb-4 text-slate-900">Delivery Hours</h4>
+              <div className="space-y-3 text-slate-700">
+                <p className="flex justify-between">
+                  <span className="font-medium">Breakfast</span>
+                  <span>7:00 AM - 10:00 AM</span>
+                </p>
+                <p className="flex justify-between">
+                  <span className="font-medium">Lunch</span>
+                  <span>12:00 PM - 3:00 PM</span>
+                </p>
+                <p className="flex justify-between">
+                  <span className="font-medium">Dinner</span>
+                  <span>7:00 PM - 10:00 PM</span>
+                </p>
+              </div>
             </div>
           </div>
 
           {/* Form Side */}
-          <div className="bg-card p-8 rounded-2xl border border-white/5">
-            <h3 className="text-2xl font-bold font-display mb-6">Send a Message</h3>
+          <div className="bg-slate-50 p-8 rounded-2xl border border-slate-200">
+            <h3 className="text-2xl font-bold font-display mb-6 text-slate-900">Send a Message</h3>
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
               <div className="space-y-2">
-                <label className="text-sm font-medium">Name</label>
+                <label className="text-sm font-medium text-slate-700">Name</label>
                 <input 
                   {...form.register("name")}
-                  className="w-full bg-secondary rounded-lg px-4 py-3 border border-transparent focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
+                  className="w-full bg-white rounded-lg px-4 py-3 border border-slate-200 focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary text-slate-900"
                   placeholder="Your Name"
                 />
-                {form.formState.errors.name && <p className="text-destructive text-xs">{form.formState.errors.name.message}</p>}
+                {form.formState.errors.name && <p className="text-red-500 text-xs">{form.formState.errors.name.message}</p>}
               </div>
 
               <div className="space-y-2">
-                <label className="text-sm font-medium">Email</label>
+                <label className="text-sm font-medium text-slate-700">Email</label>
                 <input 
                   {...form.register("email")}
                   type="email"
-                  className="w-full bg-secondary rounded-lg px-4 py-3 border border-transparent focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
+                  className="w-full bg-white rounded-lg px-4 py-3 border border-slate-200 focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary text-slate-900"
                   placeholder="your@email.com"
                 />
-                {form.formState.errors.email && <p className="text-destructive text-xs">{form.formState.errors.email.message}</p>}
+                {form.formState.errors.email && <p className="text-red-500 text-xs">{form.formState.errors.email.message}</p>}
               </div>
 
               <div className="space-y-2">
-                <label className="text-sm font-medium">Message</label>
+                <label className="text-sm font-medium text-slate-700">Message</label>
                 <textarea 
                   {...form.register("message")}
-                  className="w-full bg-secondary rounded-lg px-4 py-3 border border-transparent focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary min-h-[150px]"
+                  className="w-full bg-white rounded-lg px-4 py-3 border border-slate-200 focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary min-h-[150px] text-slate-900"
                   placeholder="How can we help you?"
                 />
-                {form.formState.errors.message && <p className="text-destructive text-xs">{form.formState.errors.message.message}</p>}
+                {form.formState.errors.message && <p className="text-red-500 text-xs">{form.formState.errors.message.message}</p>}
               </div>
 
               <button
                 type="submit"
                 disabled={isPending}
-                className="w-full py-4 bg-primary text-primary-foreground rounded-xl font-bold shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/40 disabled:opacity-50 transition-all"
+                className="w-full py-4 bg-primary text-white rounded-xl font-bold shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/40 disabled:opacity-50 transition-all"
               >
                 {isPending ? <Loader2 className="w-5 h-5 animate-spin mx-auto" /> : "Send Message"}
               </button>

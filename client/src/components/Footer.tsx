@@ -1,32 +1,30 @@
 import { Link } from "wouter";
-import { Facebook, Instagram, Twitter, MapPin, Phone, Mail, ArrowRight } from "lucide-react";
+import { Facebook, Instagram, Twitter, Phone, Mail, ArrowRight } from "lucide-react";
 
 export function Footer() {
   return (
-    <footer className="bg-black/40 border-t border-white/5 pt-16 pb-8">
+    <footer className="bg-slate-50 border-t border-slate-200 pt-16 pb-8">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
           {/* Brand */}
           <div className="space-y-6">
             <Link href="/" className="flex items-center gap-2 cursor-pointer">
-              <div className="w-8 h-8 bg-gradient-to-br from-primary to-orange-600 rounded-md flex items-center justify-center">
-                <span className="text-white font-bold">A</span>
-              </div>
-              <span className="text-xl font-bold font-display text-foreground">
-                Aura<span className="text-primary">Bites</span>
+              <img src="/logo.png" alt="AuraBite" className="w-10 h-10 object-contain" />
+              <span className="text-xl font-bold font-display text-slate-900">
+                Aura<span className="text-primary">Bite</span>
               </span>
             </Link>
-            <p className="text-muted-foreground leading-relaxed">
-              Premium fast food experience delivering happiness to your doorstep. Taste the aura of perfection in every bite.
+            <p className="text-slate-700 leading-relaxed font-medium">
+              Premium food delivery experience delivering happiness to your doorstep. Taste the aura of perfection in every bite.
             </p>
             <div className="flex gap-4">
-              <a href="#" className="w-10 h-10 rounded-full bg-secondary flex items-center justify-center text-muted-foreground hover:bg-primary hover:text-white transition-all duration-300">
+              <a href="#" className="w-10 h-10 rounded-full bg-white border border-slate-200 flex items-center justify-center text-slate-700 hover:bg-primary hover:text-white hover:border-primary transition-all duration-300 shadow-sm">
                 <Facebook className="w-5 h-5" />
               </a>
-              <a href="#" className="w-10 h-10 rounded-full bg-secondary flex items-center justify-center text-muted-foreground hover:bg-primary hover:text-white transition-all duration-300">
+              <a href="#" className="w-10 h-10 rounded-full bg-white border border-slate-200 flex items-center justify-center text-slate-700 hover:bg-primary hover:text-white hover:border-primary transition-all duration-300 shadow-sm">
                 <Instagram className="w-5 h-5" />
               </a>
-              <a href="#" className="w-10 h-10 rounded-full bg-secondary flex items-center justify-center text-muted-foreground hover:bg-primary hover:text-white transition-all duration-300">
+              <a href="#" className="w-10 h-10 rounded-full bg-white border border-slate-200 flex items-center justify-center text-slate-700 hover:bg-primary hover:text-white hover:border-primary transition-all duration-300 shadow-sm">
                 <Twitter className="w-5 h-5" />
               </a>
             </div>
@@ -34,11 +32,14 @@ export function Footer() {
 
           {/* Quick Links */}
           <div>
-            <h4 className="text-lg font-bold font-display mb-6 text-foreground">Quick Links</h4>
+            <h4 className="text-lg font-bold font-display mb-6 text-slate-900">Quick Links</h4>
             <ul className="space-y-4">
-              {['Home', 'Menu', 'About Us', 'Reviews', 'Contact'].map((item) => (
+              {['Home', 'Menu', 'Subscriptions', 'Reviews', 'About', 'Contact'].map((item) => (
                 <li key={item}>
-                  <Link href={`/${item.toLowerCase().replace(' ', '-')}`} className="text-muted-foreground hover:text-primary transition-colors flex items-center gap-2 group">
+                  <Link 
+                    href={item === 'Subscriptions' ? '/subscriptions' : `/${item.toLowerCase().replace(' ', '-')}`} 
+                    className="text-slate-700 hover:text-primary transition-colors flex items-center gap-2 group font-medium"
+                  >
                     <span className="w-1.5 h-1.5 rounded-full bg-primary/50 group-hover:bg-primary transition-colors"></span>
                     {item === 'Home' ? 'Home' : item}
                   </Link>
@@ -49,42 +50,44 @@ export function Footer() {
 
           {/* Contact */}
           <div>
-            <h4 className="text-lg font-bold font-display mb-6 text-foreground">Contact Us</h4>
+            <h4 className="text-lg font-bold font-display mb-6 text-slate-900">Contact Us</h4>
             <ul className="space-y-6">
-              <li className="flex items-start gap-3 text-muted-foreground">
-                <MapPin className="w-5 h-5 text-primary shrink-0 mt-0.5" />
-                <span>123 Flavor Street, Culinary District, Food City, FC 90210</span>
-              </li>
-              <li className="flex items-center gap-3 text-muted-foreground">
+              <li className="flex items-center gap-3 text-slate-700 font-medium">
                 <Phone className="w-5 h-5 text-primary shrink-0" />
-                <span>+1 (555) 123-4567</span>
+                <div>
+                  <div className="text-xs text-slate-500 mb-1">Call Us</div>
+                  <span>+91 7277775111</span>
+                </div>
               </li>
-              <li className="flex items-center gap-3 text-muted-foreground">
+              <li className="flex items-center gap-3 text-slate-700 font-medium">
                 <Mail className="w-5 h-5 text-primary shrink-0" />
-                <span>hello@aurabites.com</span>
+                <div>
+                  <div className="text-xs text-slate-500 mb-1">Email Us</div>
+                  <span>info@aurabiteofficial.com</span>
+                </div>
               </li>
             </ul>
           </div>
 
           {/* Newsletter */}
           <div>
-            <h4 className="text-lg font-bold font-display mb-6 text-foreground">Newsletter</h4>
-            <p className="text-muted-foreground mb-4">Subscribe for latest updates and exclusive offers.</p>
+            <h4 className="text-lg font-bold font-display mb-6 text-slate-900">Newsletter</h4>
+            <p className="text-slate-700 mb-4 font-medium">Subscribe for latest updates and exclusive offers.</p>
             <div className="flex gap-2">
               <input 
                 type="email" 
                 placeholder="Your email" 
-                className="bg-secondary border-none rounded-lg px-4 py-2 w-full focus:ring-1 focus:ring-primary text-foreground placeholder:text-muted-foreground/50"
+                className="bg-white border border-slate-200 rounded-lg px-4 py-2 w-full focus:ring-2 focus:ring-primary focus:border-transparent text-slate-900 placeholder:text-slate-400 font-medium"
               />
-              <button className="bg-primary hover:bg-primary/90 text-white rounded-lg px-3 transition-colors">
+              <button className="bg-primary hover:bg-primary/90 text-white rounded-lg px-3 transition-colors shadow-lg shadow-primary/20">
                 <ArrowRight className="w-5 h-5" />
               </button>
             </div>
           </div>
         </div>
 
-        <div className="border-t border-white/5 pt-8 text-center text-muted-foreground text-sm">
-          © {new Date().getFullYear()} AuraBites. All rights reserved.
+        <div className="border-t border-slate-200 pt-8 text-center text-slate-600 text-sm font-medium">
+          © {new Date().getFullYear()} AuraBite. All rights reserved.
         </div>
       </div>
     </footer>
