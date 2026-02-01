@@ -50,7 +50,7 @@ export function Navbar() {
 
             {/* Logo */}
             <Link href="/" className="flex items-center gap-2 group cursor-pointer">
-              <img src="/logo.png" alt="AuraBite" className="w-10 h-10 object-contain" />
+              <img src="/logo.png" alt="AuraBite" className="w-[60px] h-[60px] object-contain" />
               <span className="text-2xl font-bold font-display tracking-tight text-slate-900">
                 Aura<span className="text-primary">Bite</span>
               </span>
