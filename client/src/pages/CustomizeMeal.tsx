@@ -6,10 +6,12 @@ import { Loader2, ArrowLeft, Check } from "lucide-react";
 import { motion } from "framer-motion";
 
 const ADD_ONS = [
-  { id: "cheese", name: "Extra Cheese", price: 5000 },  // ₹50
-  { id: "bacon", name: "Crispy Bacon", price: 7500 },   // ₹75
-  { id: "egg", name: "Fried Egg", price: 3000 },        // ₹30
-  { id: "avocado", name: "Avocado", price: 8000 },      // ₹80
+  { id: "chaat-masala", name: "Extra Chaat Masala", price: 2000 },  // ₹20
+  { id: "pomegranate", name: "Fresh Pomegranate", price: 4000 },   // ₹40
+  { id: "sev", name: "Crispy Sev Topping", price: 2500 },        // ₹25
+  { id: "mint-chutney", name: "Mint Chutney", price: 3000 },      // ₹30
+  { id: "tamarind", name: "Tamarind Chutney", price: 3000 },      // ₹30
+  { id: "curd", name: "Fresh Curd/Yogurt", price: 3500 },         // ₹35
 ];
 
 export default function CustomizeMeal() {
