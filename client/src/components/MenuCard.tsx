@@ -13,10 +13,10 @@ export function MenuCard({ item }: { item: MenuItem }) {
       animate={{ opacity: 1, y: 0 }}
       whileHover={{ y: -5 }}
       transition={{ duration: 0.3 }}
-      className="bg-white md:bg-card rounded-2xl overflow-hidden border border-slate-100 md:border-border/50 md:hover:border-primary/50 shadow-sm md:shadow-none md:hover:shadow-2xl md:hover:shadow-primary/5 transition-all group h-full flex flex-row md:flex-col p-3 md:p-0 gap-3 md:gap-0"
+      className="bg-white md:bg-card rounded-2xl overflow-hidden border border-slate-100 md:border-border/50 md:hover:border-primary/50 shadow-sm md:shadow-none md:hover:shadow-2xl md:hover:shadow-primary/5 transition-all group w-full flex flex-row md:flex-col p-3 md:p-0 gap-3 md:gap-0 md:aspect-square"
     >
       {/* Content Side (Left on Mobile, Bottom on Desktop) */}
-      <div className="flex-1 flex flex-col order-1 md:order-2 md:p-5">
+      <div className="flex-1 flex flex-col order-1 md:order-2 md:p-4 md:h-[50%] overflow-hidden">
         {item.popular && (
           <div className="md:hidden flex items-center mb-1.5">
             <span className="text-primary font-bold text-[10px] flex items-center gap-1 bg-primary/10 px-2 py-0.5 rounded-md">
@@ -30,7 +30,7 @@ export function MenuCard({ item }: { item: MenuItem }) {
           <span className="text-xs font-bold text-green-950">4.9 (2.3k reviews)</span>
         </div>
 
-        <h3 className="text-[15px] leading-snug md:text-lg font-bold font-display text-slate-800 md:text-green-950 md:group-hover:text-primary transition-colors mb-1 line-clamp-2 h-10 md:h-12">
+        <h3 className="text-[15px] leading-snug md:text-base lg:text-lg font-bold font-display text-slate-800 md:text-green-950 md:group-hover:text-primary transition-colors mb-1 line-clamp-2">
           {item.name}
         </h3>
 
@@ -38,7 +38,7 @@ export function MenuCard({ item }: { item: MenuItem }) {
           ₹{item.price}
         </div>
 
-        <p className="text-slate-500 text-[11px] md:text-sm mb-3 md:mb-4 line-clamp-2 md:line-clamp-3 h-8 md:h-[60px] pt-0.5 md:pt-0">
+        <p className="text-slate-500 text-[11px] md:text-xs lg:text-sm mb-3 md:mb-2 line-clamp-2 md:line-clamp-2 pt-0.5 md:pt-0">
           {item.description}
         </p>
 
@@ -58,7 +58,7 @@ export function MenuCard({ item }: { item: MenuItem }) {
       </div>
 
       {/* Image Side (Right on Mobile, Top on Desktop) */}
-      <div className="relative w-[130px] md:w-full shrink-0 order-2 md:order-1 aspect-square">
+      <div className="relative w-[130px] md:w-full shrink-0 order-2 md:order-1 md:h-[50%]">
         {item.popular && (
           <div className="hidden md:block absolute top-3 left-3 z-10 bg-primary text-primary-foreground text-xs font-bold px-3 py-1 rounded-full shadow-lg">
             Best Seller
