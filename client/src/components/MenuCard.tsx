@@ -30,7 +30,7 @@ export function MenuCard({ item }: { item: MenuItem }) {
           <span className="text-xs font-bold text-green-950">4.9 (2.3k reviews)</span>
         </div>
 
-        <h3 className="text-[15px] leading-snug md:text-lg font-bold font-display text-slate-800 md:text-green-950 md:group-hover:text-primary transition-colors mb-1 line-clamp-2 md:line-clamp-none">
+        <h3 className="text-[15px] leading-snug md:text-lg font-bold font-display text-slate-800 md:text-green-950 md:group-hover:text-primary transition-colors mb-1 line-clamp-2 h-10 md:h-12">
           {item.name}
         </h3>
 
@@ -38,7 +38,7 @@ export function MenuCard({ item }: { item: MenuItem }) {
           ₹{item.price}
         </div>
 
-        <p className="text-slate-500 text-[11px] md:text-sm mb-3 md:mb-4 line-clamp-2 flex-1 pt-0.5 md:pt-0">
+        <p className="text-slate-500 text-[11px] md:text-sm mb-3 md:mb-4 line-clamp-2 md:line-clamp-3 h-8 md:h-[60px] pt-0.5 md:pt-0">
           {item.description}
         </p>
 
