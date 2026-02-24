@@ -77,43 +77,7 @@ const randomOrders = [
 ];
 
 function LiveOrderNotification() {
-  const [order, setOrder] = useState<typeof randomOrders[0] | null>(null);
-  const [isVisible, setIsVisible] = useState(false);
-
-  useEffect(() => {
-    const showRandomOrder = () => {
-      const random = randomOrders[Math.floor(Math.random() * randomOrders.length)];
-      setOrder(random);
-      setIsVisible(true);
-      setTimeout(() => setIsVisible(false), 5000); // Hide after 5s
-    };
-
-    const interval = setInterval(showRandomOrder, 15000); // Show every 15s
-    setTimeout(showRandomOrder, 3000); // Initial show after 3s
-
-    return () => clearInterval(interval);
-  }, []);
-
-  return (
-    <AnimatePresence>
-      {isVisible && order && (
-        <motion.div
-          initial={{ opacity: 0, y: 50, x: -20 }}
-          animate={{ opacity: 1, y: 0, x: 0 }}
-          exit={{ opacity: 0, y: 20, scale: 0.95 }}
-          className="fixed bottom-6 left-6 z-50 bg-white border border-slate-200 shadow-2xl rounded-2xl p-4 flex items-center gap-4 max-w-sm pointer-events-none"
-        >
-          <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center shrink-0">
-            <CheckCircle className="text-green-600 w-6 h-6" />
-          </div>
-          <div>
-            <div className="text-xs text-slate-400 font-medium mb-0.5">Live Order • {order.time}</div>
-            <div className="text-sm font-bold text-slate-800"><span className="text-primary">{order.name}</span> ordered {order.item}</div>
-          </div>
-        </motion.div>
-      )}
-    </AnimatePresence>
-  );
+  return null;
 }
 
 export default function Home() {
