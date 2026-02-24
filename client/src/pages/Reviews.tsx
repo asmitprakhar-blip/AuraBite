@@ -19,7 +19,7 @@ export default function Reviews() {
   };
 
   return (
-    <div className="min-h-screen pt-24 pb-16 px-4 bg-white">
+    <div className="min-h-screen pt-32 pb-16 px-4 bg-white">
       <div className="max-w-7xl mx-auto grid lg:grid-cols-3 gap-12">
 
         {/* Review Form */}

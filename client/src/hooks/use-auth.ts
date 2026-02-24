@@ -3,63 +3,19 @@ import type { User, UpsertUser } from "@shared/schema";
 import { useToast } from "@/hooks/use-toast";
 
 async function fetchUser(): Promise<User | null> {
-  const response = await fetch("/api/user", {
-    credentials: "include",
-  });
-
-  if (response.status === 401) {
-    return null;
-  }
-
-  if (!response.ok) {
-    throw new Error(`${response.status}: ${response.statusText}`);
-  }
-
-  return response.json();
+  return null;
 }
 
 async function login(credentials: Pick<UpsertUser, "username" | "password">): Promise<User> {
-  const response = await fetch("/api/login", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(credentials),
-  });
-
-  if (!response.ok) {
-    const text = await response.text();
-    throw new Error(text || "Login failed");
-  }
-
-  return response.json();
+  throw new Error("Authentication disabled in this demo");
 }
 
 async function register(credentials: Pick<UpsertUser, "username" | "password">): Promise<User> {
-  const response = await fetch("/api/register", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(credentials),
-  });
-
-  if (!response.ok) {
-    const text = await response.text();
-    throw new Error(text || "Registration failed");
-  }
-
-  return response.json();
+  throw new Error("Registration disabled in this demo");
 }
 
 async function logout(): Promise<void> {
-  const response = await fetch("/api/logout", {
-    method: "POST",
-  });
-
-  if (!response.ok) {
-    throw new Error("Logout failed");
-  }
+  // Do nothing
 }
 
 export function useAuth() {
@@ -82,9 +38,9 @@ export function useAuth() {
         description: `Logged in as ${user.username}`,
       });
     },
-    onError: (error) => {
+    onError: (error: Error) => {
       toast({
-        title: "Login failed",
+        title: "Login disabled",
         description: error.message,
         variant: "destructive",
       });
@@ -100,9 +56,9 @@ export function useAuth() {
         description: `Account created for ${user.username}`,
       });
     },
-    onError: (error) => {
+    onError: (error: Error) => {
       toast({
-        title: "Registration failed",
+        title: "Registration disabled",
         description: error.message,
         variant: "destructive",
       });
@@ -117,10 +73,9 @@ export function useAuth() {
         title: "Logged out",
         description: "See you next time!",
       });
-      // Redirect to home or login page if needed
       window.location.href = "/";
     },
-    onError: (error) => {
+    onError: (error: Error) => {
       toast({
         title: "Logout failed",
         description: error.message,
@@ -130,9 +85,9 @@ export function useAuth() {
   });
 
   return {
-    user,
-    isLoading,
-    error,
+    user: null as User | null, // Always unauthenticated
+    isLoading: false,
+    error: null,
     loginMutation,
     registerMutation,
     logoutMutation,

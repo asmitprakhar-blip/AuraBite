@@ -16,7 +16,7 @@ const subscriptionPlans = [
       "Skip/pause anytime"
     ],
     popular: false,
-    color: "bg-slate-100"
+    color: "bg-secondary"
   },
   {
     id: "lunch-dinner",
@@ -49,7 +49,7 @@ const subscriptionPlans = [
       "Skip/pause anytime"
     ],
     popular: false,
-    color: "bg-slate-100"
+    color: "bg-secondary"
   },
   {
     id: "mega-plan",
@@ -68,16 +68,16 @@ const subscriptionPlans = [
       "Nutritionist support"
     ],
     popular: false,
-    color: "bg-gradient-to-br from-amber-50 to-orange-50"
+    color: "bg-gradient-to-br from-green-50 to-emerald-50"
   }
 ];
 
 export default function Subscriptions() {
   return (
-    <div className="min-h-screen pt-24 pb-16 px-4 sm:px-6 lg:px-8 bg-background">
+    <div className="min-h-screen pt-32 pb-16 px-4 sm:px-6 lg:px-8 bg-background">
       <div className="max-w-7xl mx-auto space-y-12">
         <div className="text-center space-y-4">
-          <h1 className="text-4xl md:text-5xl font-bold font-display text-slate-900">
+          <h1 className="text-4xl md:text-5xl font-bold font-display text-green-950">
             Subscription Plans
           </h1>
           <p className="text-slate-600 max-w-2xl mx-auto">
@@ -85,69 +85,107 @@ export default function Subscriptions() {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {subscriptionPlans.map((plan) => (
-            <div
-              key={plan.id}
-              className={`relative rounded-2xl border border-slate-200 overflow-hidden ${plan.color} ${
-                plan.popular ? "ring-2 ring-primary shadow-xl" : "shadow-lg"
-              }`}
-            >
-              {plan.popular && (
-                <div className="absolute top-0 left-0 right-0 bg-primary text-white text-center py-1 text-xs font-bold uppercase">
-                  Most Popular
-                </div>
-              )}
-              
-              <div className={`p-6 ${plan.popular ? "pt-10" : ""}`}>
-                <h3 className="text-xl font-bold text-slate-900 font-display mb-1">
-                  {plan.name}
-                </h3>
-                
-                <div className="flex items-baseline gap-1 mb-2">
-                  <span className="text-3xl font-bold text-primary">₹{plan.price.toLocaleString()}</span>
-                  <span className="text-slate-500 text-sm">/{plan.period}</span>
-                </div>
-                
-                <p className="text-slate-600 text-sm mb-4">{plan.description}</p>
-                
-                <div className="flex flex-wrap gap-2 mb-4">
-                  {plan.meals.map((meal) => (
-                    <span
-                      key={meal}
-                      className="px-3 py-1 bg-white rounded-full text-xs font-medium text-slate-700 border border-slate-200"
-                    >
-                      {meal}
-                    </span>
-                  ))}
+        <div className="relative group">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 opacity-40 grayscale-[40%] select-none pointer-events-none blur-[2px] transition-all duration-700">
+            {subscriptionPlans.map((plan) => (
+              <div
+                key={plan.id}
+                className={`relative rounded-xl md:rounded-2xl border border-slate-200 overflow-hidden ${plan.color} shadow-sm flex flex-row md:flex-col items-center md:items-stretch`}
+              >
+                {plan.popular && (
+                  <div className="absolute top-0 right-0 md:left-0 md:right-0 bg-primary/50 text-white text-center py-1 md:py-1 px-3 md:px-0 text-[10px] md:text-xs font-bold uppercase rounded-bl-lg md:rounded-bl-none">
+                    Most Popular
+                  </div>
+                )}
+
+                <div className={`p-4 md:p-6 flex-1 flex flex-col md:block w-full ${plan.popular ? "pt-8 md:pt-10" : ""}`}>
+                  <h3 className="text-lg md:text-xl font-bold text-green-950 font-display mb-1 md:mb-1">
+                    {plan.name}
+                  </h3>
+
+                  <div className="hidden md:flex items-baseline gap-1 mb-2 opacity-50">
+                    <span className="text-3xl font-bold text-primary">₹{plan.price.toLocaleString()}</span>
+                    <span className="text-slate-500 text-sm">/{plan.period}</span>
+                  </div>
+
+                  <p className="hidden md:block text-slate-600 text-sm mb-4">{plan.description}</p>
+
+                  <div className="flex flex-wrap gap-1.5 md:gap-2 mb-2 md:mb-4 opacity-75">
+                    {plan.meals.map((meal) => (
+                      <span
+                        key={meal}
+                        className="px-2 py-0.5 md:px-3 md:py-1 bg-white rounded-full text-[10px] md:text-xs font-medium text-slate-700 border border-slate-200"
+                      >
+                        {meal}
+                      </span>
+                    ))}
+                  </div>
+
+                  <ul className="hidden md:block space-y-2 mb-6 opacity-75">
+                    {plan.features.map((feature, idx) => (
+                      <li key={idx} className="flex items-center gap-2 text-sm text-slate-600">
+                        <Check className="w-4 h-4 text-green-500/50 shrink-0" />
+                        {feature}
+                      </li>
+                    ))}
+                  </ul>
                 </div>
 
-                <ul className="space-y-2 mb-6">
-                  {plan.features.map((feature, idx) => (
-                    <li key={idx} className="flex items-center gap-2 text-sm text-slate-600">
-                      <Check className="w-4 h-4 text-green-500 shrink-0" />
-                      {feature}
-                    </li>
-                  ))}
-                </ul>
-
-                <Link href="/checkout">
-                  <button className="w-full py-3 rounded-xl bg-primary text-white font-bold text-sm hover:bg-primary/90 transition-all flex items-center justify-center gap-2 shadow-lg shadow-primary/20">
-                    View Plan <ArrowRight className="w-4 h-4" />
+                <div className="flex flex-col items-end shrink-0 pr-4 md:pr-6 md:pb-6 md:px-6 w-auto md:w-full gap-2 md:gap-0">
+                  <div className="flex md:hidden items-baseline gap-1 opacity-50">
+                    <span className="text-xl font-bold text-primary">₹{plan.price.toLocaleString()}</span>
+                    <span className="text-slate-500 text-[10px]">/{plan.period}</span>
+                  </div>
+                  <button disabled className="px-4 md:px-0 w-full py-1.5 md:py-3 rounded-lg md:rounded-xl bg-slate-200 text-slate-500 font-bold text-[11px] md:text-sm flex items-center justify-center gap-2 whitespace-nowrap">
+                    Coming Soon Model
                   </button>
-                </Link>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div className="absolute inset-0 flex flex-col items-center justify-center z-10 p-4">
+            <div className="bg-white/80 backdrop-blur-xl p-8 md:p-10 rounded-[2rem] shadow-2xl border border-white/50 text-center max-w-lg transform transition-all hover:scale-105 duration-500">
+              <span className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-primary/10 text-primary font-bold text-xs tracking-widest uppercase mb-6 shadow-sm border border-primary/10">
+                <span className="relative flex h-2 w-2">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+                </span>
+                Currently in Development
+              </span>
+
+              <h3 className="text-3xl md:text-4xl font-display font-bold text-slate-900 mb-4 leading-tight">
+                A New Era of <br /><span className="text-primary italic">Dining</span>
+              </h3>
+
+              <p className="text-slate-600 mb-8 leading-relaxed font-medium">
+                We are meticulously crafting our subscription delivery model to bring you an unparalleled, chef-curated experience straight to your door.
+              </p>
+
+              <div className="flex flex-col sm:flex-row items-center gap-3 justify-center">
+                <input
+                  type="email"
+                  placeholder="Enter your email"
+                  className="px-5 py-3.5 rounded-xl border border-slate-200 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary w-full sm:w-auto text-sm"
+                />
+                <button
+                  onClick={() => alert("You've been added to the waitlist!")}
+                  className="w-full sm:w-auto px-8 py-3.5 bg-green-950 text-white font-bold rounded-xl shadow-lg hover:bg-green-900 transition-all text-sm whitespace-nowrap"
+                >
+                  Join Waitlist
+                </button>
               </div>
             </div>
-          ))}
+          </div>
         </div>
 
-        <div className="bg-gradient-to-r from-primary/5 to-orange-50 rounded-2xl p-8 text-center border border-primary/10">
+        <div className="bg-gradient-to-r from-primary/5 to-emerald-50 rounded-2xl p-8 text-center border border-primary/10">
           <h3 className="text-2xl font-bold text-slate-900 mb-2">Need a Custom Plan?</h3>
           <p className="text-slate-600 mb-4">
             Contact us for corporate meal plans, special dietary requirements, or custom schedules.
           </p>
           <Link href="/contact">
-            <button className="px-6 py-3 bg-slate-900 text-white rounded-xl font-bold hover:bg-slate-800 transition-all">
+            <button className="px-6 py-3 bg-green-950 text-white rounded-xl font-bold hover:bg-green-900 transition-all">
               Contact Us
             </button>
           </Link>

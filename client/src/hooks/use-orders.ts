@@ -1,5 +1,4 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { api } from "@shared/routes";
 import { type InsertOrder } from "@shared/schema";
 import { useToast } from "@/hooks/use-toast";
 
@@ -9,21 +8,9 @@ export function useCreateOrder() {
 
   return useMutation({
     mutationFn: async (data: InsertOrder) => {
-      const res = await fetch(api.orders.create.path, {
-        method: api.orders.create.method,
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
-      });
-
-      if (!res.ok) {
-        if (res.status === 400) {
-          const error = await res.json();
-          throw new Error(error.message || "Invalid order data");
-        }
-        throw new Error("Failed to create order");
-      }
-
-      return api.orders.create.responses[201].parse(await res.json());
+      // Simulate network request
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      return { id: 1234, ...data, createdAt: new Date() };
     },
     onSuccess: () => {
       toast({
@@ -32,7 +19,7 @@ export function useCreateOrder() {
         className: "bg-green-600 text-white border-none",
       });
     },
-    onError: (error) => {
+    onError: (error: Error) => {
       toast({
         title: "Order Failed",
         description: error.message,

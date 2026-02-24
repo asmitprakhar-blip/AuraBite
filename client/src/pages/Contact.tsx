@@ -1,23 +1,25 @@
-import { useSendMessage } from "@/hooks/use-contact";
+
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { insertMessageSchema, type InsertMessage } from "@shared/schema";
 import { Loader2, MessageCircle, Phone, Mail } from "lucide-react";
 
 export default function Contact() {
-  const { mutate, isPending } = useSendMessage();
   const form = useForm<InsertMessage>({
     resolver: zodResolver(insertMessageSchema),
   });
 
   const onSubmit = (data: InsertMessage) => {
-    mutate(data, {
-      onSuccess: () => form.reset()
-    });
+    const subject = encodeURIComponent(`Contact from ${data.name}`);
+    const body = encodeURIComponent(`${data.message}\n\nEmail: ${data.email}`);
+    window.location.href = `mailto:info@aurabiteofficial.com?subject=${subject}&body=${body}`;
+    form.reset();
   };
 
+  const isPending = false;
+
   return (
-    <div className="min-h-screen pt-24 pb-16 px-4 bg-white">
+    <div className="min-h-screen pt-32 pb-16 px-4 bg-white">
       <div className="max-w-7xl mx-auto">
         <h1 className="text-4xl font-bold font-display text-center mb-4 text-slate-900">Get in Touch</h1>
         <p className="text-slate-500 text-center mb-16 max-w-xl mx-auto">
@@ -25,10 +27,10 @@ export default function Contact() {
         </p>
 
         <div className="grid lg:grid-cols-2 gap-12">
-          
+
           {/* Info Side */}
           <div className="space-y-8">
-            <div className="bg-slate-50 p-8 rounded-2xl border border-slate-200 space-y-6">
+            <div className="bg-secondary p-8 rounded-2xl border border-slate-200 space-y-6">
               <h3 className="text-2xl font-bold font-display mb-4 text-slate-900">Contact Info</h3>
               <ul className="space-y-6">
                 <li className="flex items-center gap-4">
@@ -52,16 +54,16 @@ export default function Contact() {
               </ul>
             </div>
 
-            <a 
-              href="https://wa.me/917277775111" 
-              target="_blank" 
+            <a
+              href="https://wa.me/917277775111"
+              target="_blank"
               className="block w-full py-4 bg-[#25D366] text-white rounded-xl font-bold text-center hover:opacity-90 transition-opacity flex items-center justify-center gap-2"
             >
               <MessageCircle className="w-6 h-6" /> Chat on WhatsApp
             </a>
 
             {/* Delivery Info */}
-            <div className="bg-gradient-to-br from-primary/5 to-orange-50 p-8 rounded-2xl border border-primary/10">
+            <div className="bg-gradient-to-br from-primary/5 to-emerald-50 p-8 rounded-2xl border border-primary/10">
               <h4 className="text-xl font-bold font-display mb-4 text-slate-900">Delivery Hours</h4>
               <div className="space-y-3 text-slate-700">
                 <p className="flex justify-between">
@@ -81,12 +83,12 @@ export default function Contact() {
           </div>
 
           {/* Form Side */}
-          <div className="bg-slate-50 p-8 rounded-2xl border border-slate-200">
+          <div className="bg-secondary p-8 rounded-2xl border border-slate-200">
             <h3 className="text-2xl font-bold font-display mb-6 text-slate-900">Send a Message</h3>
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
               <div className="space-y-2">
                 <label className="text-sm font-medium text-slate-700">Name</label>
-                <input 
+                <input
                   {...form.register("name")}
                   className="w-full bg-white rounded-lg px-4 py-3 border border-slate-200 focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary text-slate-900"
                   placeholder="Your Name"
@@ -96,7 +98,7 @@ export default function Contact() {
 
               <div className="space-y-2">
                 <label className="text-sm font-medium text-slate-700">Email</label>
-                <input 
+                <input
                   {...form.register("email")}
                   type="email"
                   className="w-full bg-white rounded-lg px-4 py-3 border border-slate-200 focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary text-slate-900"
@@ -107,7 +109,7 @@ export default function Contact() {
 
               <div className="space-y-2">
                 <label className="text-sm font-medium text-slate-700">Message</label>
-                <textarea 
+                <textarea
                   {...form.register("message")}
                   className="w-full bg-white rounded-lg px-4 py-3 border border-slate-200 focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary min-h-[150px] text-slate-900"
                   placeholder="How can we help you?"

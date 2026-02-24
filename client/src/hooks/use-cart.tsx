@@ -45,33 +45,12 @@ export function CartProvider({ children }: { children: ReactNode }) {
   }, [items]);
 
   const addToCart = (menuItem: MenuItem, quantity: number, customizations: string[] = []) => {
-    setItems((prev) => {
-      const existing = prev.find((i) => i.menuItemId === menuItem.id);
-      if (existing) {
-        return prev.map((i) =>
-          i.menuItemId === menuItem.id
-            ? { ...i, quantity: i.quantity + quantity, customizations: [...(i.customizations || []), ...customizations] }
-            : i
-        );
-      }
-      return [
-        ...prev,
-        {
-          menuItemId: menuItem.id,
-          name: menuItem.name,
-          price: menuItem.price,
-          image: menuItem.image,
-          quantity,
-          customizations,
-        },
-      ];
-    });
     toast({
-      title: "Added to cart",
-      description: `${quantity}x ${menuItem.name} added.`,
+      title: "Coming Soon",
+      description: "Ordering is disabled in this static demo.",
+      variant: "default",
     });
   };
-
   const removeFromCart = (menuItemId: number) => {
     setItems((prev) => prev.filter((i) => i.menuItemId !== menuItemId));
   };

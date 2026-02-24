@@ -22,7 +22,7 @@ export default function Checkout() {
   const { mutate, isPending } = useCreateOrder();
   const [, setLocation] = useLocation();
 
-  const deliveryFee = 4900; // ₹49 in paise
+  const deliveryFee = 49; // ₹49
   const total = cartTotal + deliveryFee;
 
   const form = useForm<CheckoutFormData>({
@@ -68,18 +68,18 @@ export default function Checkout() {
               <div className="grid gap-4">
                 <div className="space-y-2">
                   <label className="text-sm font-medium text-slate-700">Full Name</label>
-                  <input 
+                  <input
                     {...form.register("customerName")}
                     className="w-full bg-white rounded-lg px-4 py-3 border border-slate-200 focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary text-slate-900"
                     placeholder="Your name"
                   />
                   {form.formState.errors.customerName && <p className="text-red-500 text-xs">{form.formState.errors.customerName.message}</p>}
                 </div>
-                
+
                 <div className="grid md:grid-cols-2 gap-4">
                   <div className="space-y-2">
                     <label className="text-sm font-medium text-slate-700">Email</label>
-                    <input 
+                    <input
                       {...form.register("email")}
                       type="email"
                       className="w-full bg-white rounded-lg px-4 py-3 border border-slate-200 focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary text-slate-900"
@@ -89,7 +89,7 @@ export default function Checkout() {
                   </div>
                   <div className="space-y-2">
                     <label className="text-sm font-medium text-slate-700">Phone</label>
-                    <input 
+                    <input
                       {...form.register("phone")}
                       className="w-full bg-white rounded-lg px-4 py-3 border border-slate-200 focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary text-slate-900"
                       placeholder="+91 9XXXXXXXXX"
@@ -103,7 +103,7 @@ export default function Checkout() {
             <section className="bg-slate-50 p-6 rounded-2xl border border-slate-200 space-y-4">
               <h2 className="text-xl font-bold text-slate-900">Delivery Address</h2>
               <div className="space-y-2">
-                <textarea 
+                <textarea
                   {...form.register("address")}
                   className="w-full bg-white rounded-lg px-4 py-3 border border-slate-200 focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary min-h-[100px] text-slate-900"
                   placeholder="Enter your full delivery address..."
@@ -114,7 +114,7 @@ export default function Checkout() {
 
             <section className="bg-slate-50 p-6 rounded-2xl border border-slate-200 space-y-4">
               <h2 className="text-xl font-bold text-slate-900">Payment Method</h2>
-              <div className="grid grid-cols-3 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                 <label className="cursor-pointer">
                   <input type="radio" name="payment" className="peer sr-only" defaultChecked />
                   <div className="flex flex-col items-center gap-3 p-4 rounded-xl border border-slate-200 bg-white peer-checked:bg-primary/10 peer-checked:border-primary peer-checked:text-primary transition-all text-slate-600">
@@ -143,7 +143,7 @@ export default function Checkout() {
           <div className="flex items-center justify-between py-4 border-t border-slate-200">
             <div>
               <p className="text-slate-500 text-sm">Total Amount</p>
-              <p className="text-3xl font-bold text-primary">₹{(total / 100).toFixed(0)}</p>
+              <p className="text-3xl font-bold text-primary">₹{total}</p>
             </div>
             <button
               type="submit"

@@ -21,7 +21,7 @@ export function Footer() {
               <a href="#" className="w-10 h-10 rounded-full bg-white border border-slate-200 flex items-center justify-center text-slate-700 hover:bg-primary hover:text-white hover:border-primary transition-all duration-300 shadow-sm">
                 <Facebook className="w-5 h-5" />
               </a>
-              <a href="#" className="w-10 h-10 rounded-full bg-white border border-slate-200 flex items-center justify-center text-slate-700 hover:bg-primary hover:text-white hover:border-primary transition-all duration-300 shadow-sm">
+              <a href="https://www.instagram.com/aurabiteofficial/" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white border border-slate-200 flex items-center justify-center text-slate-700 hover:bg-primary hover:text-white hover:border-primary transition-all duration-300 shadow-sm">
                 <Instagram className="w-5 h-5" />
               </a>
               <a href="#" className="w-10 h-10 rounded-full bg-white border border-slate-200 flex items-center justify-center text-slate-700 hover:bg-primary hover:text-white hover:border-primary transition-all duration-300 shadow-sm">
@@ -36,8 +36,8 @@ export function Footer() {
             <ul className="space-y-4">
               {['Home', 'Menu', 'Subscriptions', 'Reviews', 'About', 'Contact'].map((item) => (
                 <li key={item}>
-                  <Link 
-                    href={item === 'Subscriptions' ? '/subscriptions' : `/${item.toLowerCase().replace(' ', '-')}`} 
+                  <Link
+                    href={item === 'Subscriptions' ? '/subscriptions' : `/${item.toLowerCase().replace(' ', '-')}`}
                     className="text-slate-700 hover:text-primary transition-colors flex items-center gap-2 group font-medium"
                   >
                     <span className="w-1.5 h-1.5 rounded-full bg-primary/50 group-hover:bg-primary transition-colors"></span>
@@ -74,9 +74,9 @@ export function Footer() {
             <h4 className="text-lg font-bold font-display mb-6 text-slate-900">Newsletter</h4>
             <p className="text-slate-700 mb-4 font-medium">Subscribe for latest updates and exclusive offers.</p>
             <div className="flex gap-2">
-              <input 
-                type="email" 
-                placeholder="Your email" 
+              <input
+                type="email"
+                placeholder="Your email"
                 className="bg-white border border-slate-200 rounded-lg px-4 py-2 w-full focus:ring-2 focus:ring-primary focus:border-transparent text-slate-900 placeholder:text-slate-400 font-medium"
               />
               <button className="bg-primary hover:bg-primary/90 text-white rounded-lg px-3 transition-colors shadow-lg shadow-primary/20">

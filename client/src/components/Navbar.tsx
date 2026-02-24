@@ -15,6 +15,7 @@ export function Navbar() {
   const { user, logoutMutation, isLoading } = useAuth();
   const [isOpen, setIsOpen] = useState(false);
   const [isLocationModalOpen, setIsLocationModalOpen] = useState(false);
+  const [isSignModalOpen, setIsSignModalOpen] = useState(false);
 
   // Derived state
   const isAuthenticated = !!user;
@@ -35,9 +36,19 @@ export function Navbar() {
 
   return (
     <>
-      <nav className="fixed top-0 left-0 right-0 z-50 glass-nav">
+      <nav className="fixed top-0 left-0 right-0 z-50 glass-nav shadow-sm">
+        {/* Survey Announcement Banner */}
+        <div className="bg-gradient-to-r from-green-950 via-primary to-green-950 text-white px-2 py-1.5 sm:px-4 sm:py-2 text-center text-[10px] sm:text-sm font-medium flex items-center justify-center gap-1.5 sm:gap-2">
+          <span className="hidden sm:inline">✨ Help us shape the future of AuraBite!</span>
+          <span className="sm:hidden">✨ Shape our future!</span>
+          <a href="https://forms.gle/ecSNRegkMPqJrfZNA" target="_blank" rel="noopener noreferrer" className="font-bold underline underline-offset-2 hover:text-green-200 transition-colors flex items-center gap-1">
+            <span className="hidden sm:inline">Take our 1-min Survey</span>
+            <span className="sm:hidden">Take Survey ➔</span>
+          </a>
+        </div>
+
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-20">
+          <div className="flex justify-between items-center h-16 sm:h-20">
             {/* Location Selector */}
             <button
               onClick={() => setIsLocationModalOpen(true)}
@@ -81,14 +92,7 @@ export function Navbar() {
 
             {/* Actions */}
             <div className="flex items-center gap-3">
-              <Link href="/cart" className="relative p-2 rounded-full hover:bg-slate-100 transition-colors group">
-                <ShoppingBag className="w-6 h-6 text-slate-900 group-hover:text-primary transition-colors" />
-                {itemCount > 0 && (
-                  <span className="absolute -top-1 -right-1 w-5 h-5 bg-primary text-white text-xs font-bold rounded-full flex items-center justify-center animate-in zoom-in">
-                    {itemCount}
-                  </span>
-                )}
-              </Link>
+              {/* Removed Cart Icon */}
 
               {!isLoading && (
                 <>
@@ -113,20 +117,16 @@ export function Navbar() {
                       </button>
                     </div>
                   ) : (
-                    <Link href="/auth">
-                      <div className="hidden md:flex items-center gap-2 px-5 py-2.5 bg-slate-900 text-white rounded-full font-bold text-sm hover:bg-slate-800 transition-all active:scale-95 cursor-pointer">
-                        Sign In
-                      </div>
-                    </Link>
+                    <button onClick={() => setIsSignModalOpen(true)} className="hidden md:flex items-center gap-2 px-5 py-2.5 bg-slate-900 text-white rounded-full font-bold text-sm hover:bg-slate-800 transition-all active:scale-95 cursor-pointer">
+                      Sign In
+                    </button>
                   )}
                 </>
               )}
 
-              <Link href="/menu">
-                <div className="hidden md:flex items-center gap-2 px-6 py-2.5 bg-primary text-white rounded-full font-bold text-sm shadow-lg shadow-primary/20 hover:shadow-xl hover:shadow-primary/30 transition-all active:scale-95 cursor-pointer">
-                  Order Now
-                </div>
-              </Link>
+              <button onClick={() => { window.location.href = '/#plans'; }} className="hidden md:flex items-center gap-2 px-6 py-2.5 bg-primary text-white rounded-full font-bold text-sm shadow-lg shadow-primary/20 hover:shadow-xl hover:shadow-primary/30 transition-all active:scale-95 cursor-pointer">
+                Order Now
+              </button>
 
               {/* Mobile Menu Toggle */}
               <button
@@ -171,8 +171,8 @@ export function Navbar() {
                     key={link.href}
                     href={link.href}
                     className={`block px-4 py-3 rounded-xl text-base font-medium transition-colors ${routerLocation === link.href
-                        ? "bg-primary/10 text-primary"
-                        : "text-slate-700 hover:bg-slate-50"
+                      ? "bg-primary/10 text-primary"
+                      : "text-slate-700 hover:bg-slate-50"
                       }`}
                     onClick={() => setIsOpen(false)}
                   >
@@ -190,11 +190,9 @@ export function Navbar() {
                         Sign Out
                       </button>
                     ) : (
-                      <Link href="/auth">
-                        <div className="block px-4 py-3 rounded-xl bg-slate-900 text-white text-center font-bold cursor-pointer" onClick={() => setIsOpen(false)}>
-                          Sign In
-                        </div>
-                      </Link>
+                      <button className="block w-full text-left px-4 py-3 rounded-xl bg-slate-900 text-white text-center font-bold cursor-pointer" onClick={() => { setIsOpen(false); setIsSignModalOpen(true); }}>
+                        Sign In
+                      </button>
                     )}
                   </div>
                 )}
@@ -209,6 +207,30 @@ export function Navbar() {
         onClose={() => setIsLocationModalOpen(false)}
         onSelectLocation={setLocation}
       />
+
+      {isSignModalOpen && (
+        <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/50 p-4">
+          <div className="bg-white rounded-2xl p-8 max-w-sm w-full text-center relative pointer-events-auto">
+            <button
+              onClick={() => setIsSignModalOpen(false)}
+              className="absolute top-4 right-4 text-slate-400 hover:text-slate-600"
+            >
+              <X className="w-5 h-5" />
+            </button>
+            <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+              <User className="w-8 h-8 text-primary" />
+            </div>
+            <h3 className="text-2xl font-bold text-slate-900 mb-2">Coming Soon</h3>
+            <p className="text-slate-500 mb-6">User accounts and authentication are currently being upgraded. Please check back later!</p>
+            <button
+              onClick={() => setIsSignModalOpen(false)}
+              className="w-full bg-slate-900 text-white py-3 rounded-xl font-bold hover:bg-slate-800 transition-colors"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      )}
     </>
   );
 }

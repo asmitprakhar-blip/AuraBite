@@ -1,16 +1,17 @@
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
-import { api } from "@shared/routes";
-import { type InsertReview } from "@shared/schema";
+import { type InsertReview, type Review } from "@shared/schema";
 import { useToast } from "@/hooks/use-toast";
+
+const MOCK_REVIEWS: Review[] = [
+  { id: 1, name: "Sarah J.", rating: 5, comment: "Absolutely delicious! The Aura Classic Burger is my new favorite.", createdAt: new Date() },
+  { id: 2, name: "Mike T.", rating: 4, comment: "Fast delivery and great food. Fries could be a bit crispier though.", createdAt: new Date() },
+  { id: 3, name: "Emily R.", rating: 5, comment: "The ordering experience was super smooth. Will definitely order again!", createdAt: new Date() },
+];
 
 export function useReviews() {
   return useQuery({
-    queryKey: [api.reviews.list.path],
-    queryFn: async () => {
-      const res = await fetch(api.reviews.list.path);
-      if (!res.ok) throw new Error("Failed to fetch reviews");
-      return api.reviews.list.responses[200].parse(await res.json());
-    },
+    queryKey: ["/api/reviews"],
+    queryFn: async () => MOCK_REVIEWS,
   });
 }
 
@@ -20,17 +21,18 @@ export function useCreateReview() {
 
   return useMutation({
     mutationFn: async (data: InsertReview) => {
-      const res = await fetch(api.reviews.create.path, {
-        method: api.reviews.create.method,
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
-      });
-
-      if (!res.ok) throw new Error("Failed to submit review");
-      return api.reviews.create.responses[201].parse(await res.json());
+      // Simulate network request
+      await new Promise(resolve => setTimeout(resolve, 500));
+      const newReview: Review = {
+        id: MOCK_REVIEWS.length + 1,
+        ...data,
+        createdAt: new Date(),
+      };
+      MOCK_REVIEWS.push(newReview);
+      return newReview;
     },
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: [api.reviews.list.path] });
+      queryClient.invalidateQueries({ queryKey: ["/api/reviews"] });
       toast({
         title: "Review Submitted",
         description: "Thank you for your feedback!",

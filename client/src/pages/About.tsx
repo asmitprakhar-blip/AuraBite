@@ -1,8 +1,8 @@
 export default function About() {
   return (
-    <div className="min-h-screen pt-24 pb-16 px-4 bg-white">
+    <div className="min-h-screen pt-32 pb-16 px-4 bg-white">
       <div className="max-w-4xl mx-auto space-y-16">
-        
+
         {/* Intro */}
         <div className="text-center space-y-6">
           <h1 className="text-5xl font-bold font-display text-slate-900">Our Story</h1>
@@ -13,9 +13,9 @@ export default function About() {
 
         {/* Image */}
         <div className="rounded-3xl overflow-hidden aspect-video shadow-2xl shadow-slate-200">
-          <img 
-            src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=1600" 
-            alt="Kitchen" 
+          <img
+            src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=1600"
+            alt="Kitchen"
             className="w-full h-full object-cover"
           />
         </div>
@@ -27,7 +27,7 @@ export default function About() {
             { title: "Master Chefs", desc: "Our recipes are crafted by award-winning culinary experts." },
             { title: "Sustainable Packaging", desc: "100% eco-friendly packaging because we love our planet." }
           ].map((item, i) => (
-            <div key={i} className="p-8 rounded-2xl bg-slate-50 border border-slate-200">
+            <div key={i} className="p-8 rounded-2xl bg-secondary border border-slate-200">
               <h3 className="text-xl font-bold font-display mb-3 text-primary">{item.title}</h3>
               <p className="text-slate-600">{item.desc}</p>
             </div>
@@ -35,10 +35,10 @@ export default function About() {
         </div>
 
         {/* Mission */}
-        <div className="bg-gradient-to-r from-primary/5 to-orange-50 rounded-3xl p-12 border border-primary/10">
+        <div className="bg-gradient-to-r from-primary/5 to-emerald-50 rounded-3xl p-12 border border-primary/10">
           <h2 className="text-3xl font-bold font-display mb-6 text-slate-900 text-center">Our Mission</h2>
           <p className="text-slate-700 text-center max-w-2xl mx-auto leading-relaxed">
-            At AuraBite, we're committed to transforming the way India eats. Our subscription meal plans deliver 
+            At AuraBite, we're committed to transforming the way India eats. Our subscription meal plans deliver
             fresh, chef-prepared meals daily, making healthy eating convenient and affordable for everyone.
           </p>
         </div>
@@ -59,10 +59,10 @@ export default function About() {
         </div>
 
         {/* Team Section */}
-        <div className="text-center bg-slate-50 rounded-3xl p-12 border border-slate-200">
+        <div className="text-center bg-secondary rounded-3xl p-12 border border-slate-200">
           <h2 className="text-3xl font-bold font-display mb-6 text-slate-900">Join Our Team</h2>
           <p className="text-slate-600 mb-8 max-w-xl mx-auto">
-            We are always looking for passionate people to join our kitchen and delivery crew. 
+            We are always looking for passionate people to join our kitchen and delivery crew.
             Be part of India's fastest-growing meal delivery service.
           </p>
           <button className="px-8 py-3 bg-slate-900 text-white font-bold rounded-xl hover:bg-slate-800 transition-colors">

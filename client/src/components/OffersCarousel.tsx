@@ -19,7 +19,7 @@ const offers = [
     subtitle: "On first order",
     code: "CASH75",
     icon: Gift,
-    bgColor: "bg-orange-500",
+    bgColor: "bg-emerald-500",
     textColor: "text-white"
   },
   {
@@ -28,7 +28,7 @@ const offers = [
     subtitle: "On Subscriptions",
     code: "SUB20",
     icon: Tag,
-    bgColor: "bg-purple-500",
+    bgColor: "bg-teal-500",
     textColor: "text-white"
   }
 ];
@@ -75,7 +75,7 @@ export function OffersCarousel() {
   }, []);
 
   return (
-    <section className="py-12 bg-slate-50 border-y border-slate-100">
+    <section className="py-12 bg-secondary border-y border-slate-100">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Offers Carousel */}
         <div className="mb-10">

@@ -23,23 +23,36 @@ import OrderSuccess from "@/pages/OrderSuccess";
 import NotFound from "@/pages/not-found";
 import AuthPage from "@/pages/Auth";
 
-function Router() {
-  return (
-    <Switch>
-      <Route path="/" component={Home} />
-      <Route path="/menu" component={Menu} />
-      <Route path="/menu/:id" component={CustomizeMeal} />
-      <Route path="/cart" component={Cart} />
-      <Route path="/checkout" component={Checkout} />
-      <Route path="/reviews" component={Reviews} />
-      <Route path="/about" component={About} />
-      <Route path="/contact" component={Contact} />
-      <Route path="/subscriptions" component={Subscriptions} />
-      <Route path="/order-success" component={OrderSuccess} />
+import { motion } from "framer-motion";
+import { useLocation } from "wouter";
 
-      <Route path="/auth" component={AuthPage} />
-      <Route component={NotFound} />
-    </Switch>
+function Router() {
+  const [location] = useLocation();
+
+  return (
+    <motion.div
+      key={location}
+      initial={{ opacity: 0, y: 15 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.4, ease: "easeOut" }}
+      className="w-full h-full"
+    >
+      <Switch>
+        <Route path="/" component={Home} />
+        <Route path="/menu" component={Menu} />
+        <Route path="/menu/:id" component={CustomizeMeal} />
+        <Route path="/cart" component={Cart} />
+        <Route path="/checkout" component={Checkout} />
+        <Route path="/reviews" component={Reviews} />
+        <Route path="/about" component={About} />
+        <Route path="/contact" component={Contact} />
+        <Route path="/subscriptions" component={Subscriptions} />
+        <Route path="/order-success" component={OrderSuccess} />
+
+        <Route path="/auth" component={AuthPage} />
+        <Route component={NotFound} />
+      </Switch>
+    </motion.div>
   );
 }
 
