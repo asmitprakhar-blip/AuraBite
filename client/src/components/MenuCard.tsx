@@ -58,7 +58,7 @@ export function MenuCard({ item }: { item: MenuItem }) {
       </div>
 
       {/* Image Side (Right on Mobile, Top on Desktop) */}
-      <div className="relative w-[130px] md:w-full shrink-0 order-2 md:order-1 h-[135px] md:h-auto md:aspect-[4/3]">
+      <div className="relative w-[130px] md:w-full shrink-0 order-2 md:order-1 aspect-square">
         {item.popular && (
           <div className="hidden md:block absolute top-3 left-3 z-10 bg-primary text-primary-foreground text-xs font-bold px-3 py-1 rounded-full shadow-lg">
             Best Seller
@@ -68,7 +68,7 @@ export function MenuCard({ item }: { item: MenuItem }) {
           ₹{item.price}
         </div>
 
-        <div className="w-full h-[115px] md:h-full rounded-xl md:rounded-none md:rounded-t-2xl overflow-hidden relative shadow-sm md:shadow-none bg-slate-100">
+        <div className="w-full h-[100px] md:h-full rounded-xl md:rounded-none md:rounded-t-2xl overflow-hidden relative shadow-sm md:shadow-none bg-slate-100">
           <img
             src={item.image}
             alt={item.name}
