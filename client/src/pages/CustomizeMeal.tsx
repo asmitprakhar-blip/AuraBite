@@ -58,10 +58,16 @@ export default function CustomizeMeal() {
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
-            className="relative rounded-3xl overflow-hidden aspect-square h-fit sticky top-24 shadow-2xl"
+            className={`relative rounded-3xl overflow-hidden aspect-square h-fit sticky top-24 ${item.image ? "shadow-2xl" : "bg-slate-100 flex items-center justify-center border border-slate-200"}`}
           >
-            <img src={item.image} alt={item.name} className="w-full h-full object-cover" />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+            {item.image ? (
+              <>
+                <img src={item.image} alt={item.name} className="w-full h-full object-cover" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+              </>
+            ) : (
+              <span className="text-slate-400 font-bold uppercase tracking-widest">No Image Available</span>
+            )}
           </motion.div>
 
           {/* Details */}
@@ -82,8 +88,8 @@ export default function CustomizeMeal() {
                       key={addon.id}
                       onClick={() => toggleAddon(addon.id)}
                       className={`flex items-center justify-between p-4 rounded-xl border transition-all ${selectedAddons.includes(addon.id)
-                          ? "bg-primary/10 border-primary text-primary"
-                          : "bg-white border-slate-200 text-slate-600 hover:border-slate-300"
+                        ? "bg-primary/10 border-primary text-primary"
+                        : "bg-white border-slate-200 text-slate-600 hover:border-slate-300"
                         }`}
                     >
                       <span className="font-medium">{addon.name}</span>

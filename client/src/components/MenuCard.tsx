@@ -68,12 +68,18 @@ export function MenuCard({ item }: { item: MenuItem }) {
           ₹{item.price}
         </div>
 
-        <div className="w-full h-[100px] md:h-full rounded-xl md:rounded-none md:rounded-t-2xl overflow-hidden relative shadow-sm md:shadow-none bg-slate-100">
-          <img
-            src={item.image}
-            alt={item.name}
-            className="w-full h-full object-cover transition-transform duration-500 md:group-hover:scale-110"
-          />
+        <div className="w-full h-[100px] md:h-full rounded-xl md:rounded-none md:rounded-t-2xl overflow-hidden relative shadow-sm md:shadow-none bg-slate-100 flex items-center justify-center">
+          {item.image ? (
+            <img
+              src={item.image}
+              alt={item.name}
+              className="w-full h-full object-cover transition-transform duration-500 md:group-hover:scale-110"
+            />
+          ) : (
+            <div className="w-full h-full bg-slate-100 flex items-center justify-center">
+              <span className="text-[10px] uppercase font-bold text-slate-400">No Image</span>
+            </div>
+          )}
         </div>
 
         {/* Mobile ADD Button inside Image Column */}
